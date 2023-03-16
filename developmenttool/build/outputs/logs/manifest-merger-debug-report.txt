@@ -3,21 +3,9 @@ manifest
 ADDED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
 INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
 INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
 	package
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:2:5-41
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
-		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
-	android:versionName
-		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
-		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
-	android:versionCode
-		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:1-5:12
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\developmenttool\src\main\AndroidManifest.xml:1:11-69

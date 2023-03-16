@@ -37,7 +37,6 @@ public class MyWindowSet {
      * 设置横屏
      */
     public void setScreenLandscape() {
-
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
@@ -50,15 +49,8 @@ public class MyWindowSet {
     public boolean screenIsLandscape() {
         int screenStatu = activity.getResources().getConfiguration().orientation;
 
-        switch (screenStatu) {
-            case 1:
-                return false;
-            case 0:
-                return true;
-            case 2:
-                return true;
-        }
-        return false;
+
+        return screenStatu==ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
     }
 
 

@@ -895,15 +895,8 @@ id image
 id info
 id italic
 id item_touch_helper_previous_elevation
-id iv
-id iv1
-id iv2
-id iv3
-id iv_add
 id iv_app_icon
 id iv_back
-id iv_set_look_password
-id iv_set_open_password
 id line1
 id line3
 id listMode
@@ -913,7 +906,6 @@ id ll_bg
 id lv
 id message
 id middle
-id mrg
 id multiply
 id never
 id none
@@ -978,7 +970,6 @@ id topPanel
 id tvTitle
 id tv_app_name
 id tv_down_info
-id tv_down_progress
 id tv_other
 id tv_private
 id tv_show_update_info
@@ -1033,14 +1024,9 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_launcher
 layout activity_main
-layout activity_opengl1
-layout activity_password
-layout activity_test_down
-layout activity_test_radiogroup
 layout activity_user_private
 layout activity_version_update
 layout adapter_apps_layout
-layout adapter_lv_apps_layout
 layout custom_dialog
 layout notification_action
 layout notification_action_tombstone

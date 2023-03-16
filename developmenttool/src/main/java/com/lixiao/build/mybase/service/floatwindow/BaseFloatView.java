@@ -6,7 +6,7 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.google.gson.internal.$Gson$Preconditions;
+
 import com.lixiao.build.mybase.service.floatwindow.util.BaseFloatViewXAndYUtil;
 
 

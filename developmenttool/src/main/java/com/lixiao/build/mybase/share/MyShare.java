@@ -2,6 +2,9 @@ package com.lixiao.build.mybase.share;
 
 import android.text.TextUtils;
 
+import com.lixiao.build.mybase.appliction.BaseApplication;
+import com.newbee.data_sava_lib.share.BaseShare;
+
 /**
  * @author lixiaogege!
  * @description: one day day ,no zuo no die !
@@ -10,7 +13,7 @@ import android.text.TextUtils;
 public class MyShare extends BaseShare {
     private static MyShare myShare;
     private MyShare(){
-        super();
+        super(BaseApplication.getContext());
     }
 
     public static MyShare getInstance(){
@@ -25,27 +28,6 @@ public class MyShare extends BaseShare {
     }
 
 
-    final String appIndex = "appIndex";
 
-    public void putAppIndex(String pagName,int index) {
-        if(TextUtils.isEmpty(pagName)){
-            return;
-        }
-
-        putString(pagName+appIndex, index+"");
-    }
-
-    public int getAppIndex(String pagName) {
-        try {
-            if(!TextUtils.isEmpty(pagName)){
-                String shareStr = getString(pagName+appIndex);
-                return Integer.valueOf(shareStr);
-            }
-
-        } catch (Exception e) {
-
-        }
-        return -1;
-    }
 
 }
