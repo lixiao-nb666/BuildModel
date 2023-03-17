@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -21,6 +22,7 @@ import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.MyWindowSet;
 import com.lixiao.build.mybase.activity.util.ActivityManager;
 import com.lixiao.build.mybase.activity.util.ActivityUtil;
+import com.lixiao.build.mybase.share.MyShare;
 
 
 /**
@@ -79,6 +81,12 @@ public abstract class BaseCompatActivity extends AppCompatActivity {
     //设置这个活动横竖屏
     public abstract void changeConfig();
 
+    public boolean needWAndH(){
+        return false;
+    }
+
+    public void getWAndH(int w,int h){}
+
 
 
     @Override
@@ -105,9 +113,15 @@ public abstract class BaseCompatActivity extends AppCompatActivity {
         if (context == null)
             context = this;
         setContentView(getViewLayoutRsId());
+
+
         initView();
         initData();
         initControl();
+        if(needWAndH()){
+            initWAndH();
+        }
+
         myWindowSet.setKeepScreenOn();
         if(needFullScreen()){
             myWindowSet.setScreenFull();
@@ -119,6 +133,28 @@ public abstract class BaseCompatActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         LG.i(tag,"onCreate>>>");
 
+    }
+
+    private void initWAndH(){
+        String wStr= MyShare.getInstance().getString("w");
+        String hStr= MyShare.getInstance().getString("h");
+        if(!TextUtils.isEmpty(wStr)&&!TextUtils.isEmpty(hStr)){
+            try {
+                int  w = Integer.valueOf(wStr);
+                int  h = Integer.valueOf(hStr);
+                getWAndH(w,h);
+                return;
+            }catch (Exception e){
+            }
+        }
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                int  w = view.getMeasuredWidth();
+                int  h = view.getMeasuredHeight();
+                getWAndH(w,h);
+            }
+        });
     }
 
     @Override
