@@ -1,28 +1,20 @@
 package com.lixiao.build.mybase.activity.welcome;
 
 import android.annotation.TargetApi;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
 import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
 import com.lixiao.build.mybase.activity.welcome.bean.WelcomeInfoBean;
 import com.lixiao.build.mybase.activity.welcome.dialog.WelcomeDialog;
-import com.lixiao.build.mybase.appliction.MyApplicationFile;
-import com.lixiao.developmenttool.R;
-import java.util.ArrayList;
+
 import java.util.List;
 
 

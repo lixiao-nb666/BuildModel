@@ -44,7 +44,6 @@ public abstract class BaseApplication extends Application {
         // 程序创建的时候执行
         application=this;
         context=getApplicationContext();
-        MyApplicationFile.getInstance();
         init();
 
     }
