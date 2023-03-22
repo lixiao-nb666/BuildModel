@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
 MERGED from [:developmenttool] G:\asworkspace\lixiao_lib\buildmodel\developmenttool\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\bd043cb87b9f52f6824414407fa9753a\transformed\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\e806070f2240607709f80600c61c5de7\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -28,22 +28,22 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\NINGMEI\
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\70cce508790e23aaa95e51e760ccdaa4\transformed\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.lixiao-nb666:sava_data_lib:1.0.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\7fb72f13e826ff6697cbbf35da12450e\transformed\jetified-sava_data_lib-1.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.github.lixiao-nb666:gson_lib:1.0.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\a5dfab5f642abd5b3156a1f5c17d11b2\transformed\jetified-gson_lib-1.0.0\AndroidManifest.xml:2:1-9:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
-INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
+INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
 	package
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:2:5-51
 	android:versionCode
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-147:12
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:1-148:12
 		INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:1:11-69
@@ -243,8 +243,14 @@ uses-permission#android.hardware.sensor.accelerometer
 ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:76:5-76
 	android:name
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:76:22-74
+uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:77:5-78:40
+	tools:ignore
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:78:9-37
+	android:name
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:77:22-79
 application
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:82:5-146:19
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:83:5-147:19
 MERGED from [androidx.core:core:1.3.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\f0aa11985e425096c8c608ac697f0c7b\transformed\core-1.3.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.3.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\f0aa11985e425096c8c608ac697f0c7b\transformed\core-1.3.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\9a37b19e5a50c60f20c39ed898805105\transformed\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
@@ -252,115 +258,115 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\NI
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.0] C:\Users\NINGMEI\.gradle\caches\transforms-3\f0aa11985e425096c8c608ac697f0c7b\transformed\core-1.3.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:87:9-35
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:88:9-35
 	android:label
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:85:9-41
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:86:9-41
 	android:roundIcon
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:86:9-54
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:87:9-54
 	android:icon
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:84:9-43
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:85:9-43
 	android:allowBackup
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:83:9-35
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:84:9-35
 	android:theme
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:90:9-78
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:91:9-78
 	android:usesCleartextTraffic
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:88:9-44
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:89:9-44
 uses-library#org.apache.http.legacy
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:91:9-93:40
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:92:9-94:40
 	android:required
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:93:13-37
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:94:13-37
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:92:13-50
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:93:13-50
 activity#com.newbee.lixiaomodel.DemoActivity
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:98:9-128:20
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:99:9-129:20
 	android:screenOrientation
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:104:13-50
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:105:13-50
 	android:enabled
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:109:13-35
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:110:13-35
 	android:clearTaskOnLaunch
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:101:13-45
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:102:13-45
 	android:stateNotNeeded
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:102:13-42
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:103:13-42
 	android:launchMode
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:100:13-44
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:101:13-44
 	android:windowSoftInputMode
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:103:13-52
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:104:13-52
 	android:resizeableActivity
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:106:13-46
-	android:resumeWhilePausing
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:107:13-46
+	android:resumeWhilePausing
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:108:13-46
 	android:configChanges
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:105:13-134
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:106:13-134
 	android:taskAffinity
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:108:13-36
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:109:13-36
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:99:13-63
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:100:13-63
 intent-filter#action:name:android.intent.action.MAIN+action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LAUNCHER_APP+category:name:android.intent.category.MONKEY
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:110:13-127:29
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:111:13-128:29
 action#android.intent.action.VIEW
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:113:17-68
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:114:17-68
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:113:25-66
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:114:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:114:17-76
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:115:17-76
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:114:27-74
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:115:27-74
 action#android.intent.action.MAIN
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:122:17-69
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:123:17-69
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:122:25-66
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:123:25-66
 category#android.intent.category.HOME
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:123:17-73
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:124:17-73
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:123:27-70
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:124:27-70
 category#android.intent.category.DEFAULT
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:124:17-76
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:125:17-76
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:124:27-73
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:125:27-73
 category#android.intent.category.MONKEY
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:125:17-74
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:126:17-74
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:125:27-72
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:126:27-72
 category#android.intent.category.LAUNCHER_APP
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:126:17-81
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:127:17-81
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:126:27-78
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:127:27-78
 receiver#com.lixiao.build.util.systemapp.broadcastreceiver.SystemAppReceiver
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:133:9-145:20
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:134:9-146:20
 	android:enabled
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:135:13-35
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:136:13-35
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:134:13-95
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:135:13-95
 intent-filter#action:name:android.intent.action.PACKAGE_ADDED+action:name:android.intent.action.PACKAGE_CHANGED+action:name:android.intent.action.PACKAGE_INSTALL+action:name:android.intent.action.PACKAGE_REMOVED+action:name:android.intent.action.PACKAGE_REPLACED+action:name:android.intent.action.PACKAGE_RESTARTED+data:scheme:package
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:136:13-144:29
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:137:13-145:29
 action#android.intent.action.PACKAGE_ADDED
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:137:17-85
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:138:17-85
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:137:25-75
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:138:25-75
 action#android.intent.action.PACKAGE_CHANGED
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:138:17-87
-	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:138:25-77
-action#android.intent.action.PACKAGE_REMOVED
 ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:139:17-87
 	android:name
 		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:139:25-77
+action#android.intent.action.PACKAGE_REMOVED
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:140:17-87
+	android:name
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:140:25-77
 action#android.intent.action.PACKAGE_REPLACED
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:140:17-88
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:141:17-88
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:140:25-78
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:141:25-78
 action#android.intent.action.PACKAGE_RESTARTED
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:141:17-89
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:142:17-89
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:141:25-79
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:142:25-79
 action#android.intent.action.PACKAGE_INSTALL
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:142:17-87
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:143:17-87
 	android:name
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:142:25-77
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:143:25-77
 data
-ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:143:17-55
+ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:144:17-55
 	android:scheme
-		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:143:23-47
+		ADDED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml:144:23-47
 uses-sdk
 INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\asworkspace\lixiao_lib\buildmodel\app\src\main\AndroidManifest.xml

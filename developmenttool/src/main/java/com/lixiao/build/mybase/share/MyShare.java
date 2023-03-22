@@ -27,7 +27,23 @@ public class MyShare extends BaseShare {
         return myShare;
     }
 
+    @Override
+    public String getString(String k) {
+        return super.getString(k);
+    }
 
+    @Override
+    public String getString(String k, String defStr) {
+        return super.getString(k, defStr);
+    }
 
+    @Override
+    public void putString(String K, String V) {
+        super.putString(K, V);
+    }
 
+    @Override
+    public void clear() {
+        super.clear();
+    }
 }

@@ -1,14 +1,17 @@
 package com.lixiao.build.mybase.activity.welcome;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
@@ -21,17 +24,24 @@ import java.util.List;
 public abstract class BaseWelcomeActivity extends BaseCompatActivity {
 
     public abstract int getWelcomeLayoutId();
+
     public abstract void initWelcomeView();
+
     public abstract void initWelcomeData();
+
     public abstract void initWelcomeControl();
+
     public abstract WelcomeInfoBean getWelcomeInfoBean();
+
     public abstract void userNoPermission();
+
     public abstract void userGetAllPermission();
 
-    private boolean isCanSend=true;
-    private void canSendUserGetAllPermission(){
-        if(isCanSend){
-            isCanSend=false;
+    private boolean isCanSend = true;
+
+    private void canSendUserGetAllPermission() {
+        if (isCanSend) {
+            isCanSend = false;
             userGetAllPermission();
         }
     }
@@ -50,10 +60,10 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
 
     @Override
     public void initData() {
-        welcomeInfoBean=getWelcomeInfoBean();
+        welcomeInfoBean = getWelcomeInfoBean();
         initWelcomeData();
-        if(null==welcomeInfoBean){
-            welcomeInfoBean=new WelcomeInfoBean();
+        if (null == welcomeInfoBean) {
+            welcomeInfoBean = new WelcomeInfoBean();
         }
     }
 
@@ -63,9 +73,7 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     }
 
 
-
-
-        @Override
+    @Override
     public void closeActivity() {
     }
 
@@ -87,9 +95,16 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     // 要申请的权限
     private List<String> permissions;
 
-    private int getPermissionsActivityType = 52013;
-    @TargetApi(Build.VERSION_CODES.M)
+
     private void initPermissions() {
+        if (welcomeInfoBean.isNeedFilePermission() && !fileManagerPermission()) {
+            return;
+        }
+        initOtherPermissions();
+
+    }
+
+    private void initOtherPermissions() {
         // 版本判断。当手机系统大于 23 时，才有必要去判断权限是否获取
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             initNeedPermissions();
@@ -104,7 +119,6 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     }
 
 
-
     private void initNeedPermissions() {
         permissions = welcomeInfoBean.getPermissionList();
     }
@@ -113,7 +127,7 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     private boolean checkPermissions() {
         for (int i = 0; i < permissions.size(); i++) {
             if (!checkPermission(permissions.get(i))) {
-                LG.i(tag,"checkPermissions:false-"+permissions.get(i));
+                LG.i(tag, "checkPermissions:false-" + permissions.get(i));
                 return false;
             }
         }
@@ -125,19 +139,15 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     private boolean checkPermission(String permission) {
         // 检查该权限是否已经获取
         int a = this.checkSelfPermission(permission);
-        LG.i(tag,"checkSelfPermission："+a+"-"+permission);
+        LG.i(tag, "checkSelfPermission：" + a + "-" + permission);
         // 权限是否已经 授权 GRANTED---授权  DINIED---拒绝
-        if (a == PackageManager.PERMISSION_GRANTED)
-            return true;
+        if (a == PackageManager.PERMISSION_GRANTED) return true;
         return false;
     }
 
 
-
-
-
     private WelcomeDialog welcomeDialog;
-    private WelcomeDialog.Click welcomeDialogClick=new WelcomeDialog.Click() {
+    private WelcomeDialog.Click welcomeDialogClick = new WelcomeDialog.Click() {
 
 
         @Override
@@ -155,14 +165,15 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
             userNoPermission();
         }
     };
+
     // 提示用户该请求权限的弹出框
     private void showDialogTipUserRequestPermission() {
-        if(!isCanSend){
+        if (!isCanSend) {
             return;
         }
 
-        if(null==welcomeDialog){
-            welcomeDialog=new WelcomeDialog(welcomeDialogClick);
+        if (null == welcomeDialog) {
+            welcomeDialog = new WelcomeDialog(welcomeDialogClick);
         }
         welcomeDialog.show(this);
     }
@@ -171,28 +182,31 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
     private void startRequestPermission() {
         String[] strs = new String[permissions.size()];
         strs = permissions.toArray(strs);
-        ActivityCompat.requestPermissions(this, strs, getPermissionsActivityType);
+        ActivityCompat.requestPermissions(this, strs, WelcomeActivityConfig.getPermissionsActivityType);
     }
 
     // 用户权限 申请 的回调方法
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == getPermissionsActivityType) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                boolean canStar = true;
-                for (int i = 0; i < grantResults.length; i++) {
-                    canStar = (grantResults[i] == PackageManager.PERMISSION_GRANTED);
+        switch (requestCode) {
+            case WelcomeActivityConfig.getPermissionsActivityType:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    boolean canStar = true;
+                    for (int i = 0; i < grantResults.length; i++) {
+                        canStar = (grantResults[i] == PackageManager.PERMISSION_GRANTED);
+                    }
+                    if (canStar) {
+                        canSendUserGetAllPermission();
+                    } else {
+                        showDialogTipUserRequestPermission();
+                    }
                 }
-                if (canStar) {
-                    canSendUserGetAllPermission();
-                } else {
-                    showDialogTipUserRequestPermission();
-                }
-            }
+                break;
         }
-    }
 
+
+    }
 
 
     // 跳转到当前应用的设置界面
@@ -201,24 +215,63 @@ public abstract class BaseWelcomeActivity extends BaseCompatActivity {
         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
-        startActivityForResult(intent, 123);
+        startActivityForResult(intent, WelcomeActivityConfig.toSetType);
     }
 
     //
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 123) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                // 检查该权限是否已经获取
-                if (checkPermissions()) {
-                    // 提示用户应该去应用设置界面手动开启权限
-                    canSendUserGetAllPermission();
-                } else {
-                    showDialogTipUserRequestPermission();
+        switch (requestCode) {
+            case WelcomeActivityConfig.toSetType:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // 检查该权限是否已经获取
+                    if (checkPermissions()) {
+                        // 提示用户应该去应用设置界面手动开启权限
+                        canSendUserGetAllPermission();
+                    } else {
+                        showDialogTipUserRequestPermission();
+                    }
                 }
+                break;
+            case WelcomeActivityConfig.togetAllFileManegerType:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    // 判断有没有权限,没有就申请文件管理
+                    if (!Environment.isExternalStorageManager()) {
+                        showToast("no file permission ,exit!");
+                        finish();
+
+                    }
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // 先判断有没有权限
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        showToast("no file permission ,exit!");
+                        finish();
+                    }
+                }
+                break;
+        }
+    }
+
+    public boolean fileManagerPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // 判断有没有权限,没有就申请文件管理
+            if (!Environment.isExternalStorageManager()) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + this.getPackageName()));
+                startActivityForResult(intent, WelcomeActivityConfig.togetAllFileManegerType);
+                showToast("the app must be have file permission");
+                return false;
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 先判断有没有权限
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, WelcomeActivityConfig.togetAllFileManegerType);
+                showToast("the app must be have file permission");
+                return false;
             }
         }
+        return true;
     }
 
 }

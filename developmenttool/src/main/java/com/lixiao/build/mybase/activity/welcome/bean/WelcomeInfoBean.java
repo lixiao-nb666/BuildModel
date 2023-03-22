@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class WelcomeInfoBean implements Serializable {
     public  List<String> permissionList;
+    private boolean needFilePermission;
 
 
     public List<String> getPermissionList() {
@@ -24,10 +25,19 @@ public class WelcomeInfoBean implements Serializable {
         this.permissionList = permissionList;
     }
 
+    public boolean isNeedFilePermission() {
+        return needFilePermission;
+    }
+
+    public void setNeedFilePermission(boolean needFilePermission) {
+        this.needFilePermission = needFilePermission;
+    }
+
     @Override
     public String toString() {
         return "WelcomeInfoBean{" +
                 "permissionList=" + permissionList +
+                ", needFilePermission=" + needFilePermission +
                 '}';
     }
 }
