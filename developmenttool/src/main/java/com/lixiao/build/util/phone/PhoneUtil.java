@@ -19,6 +19,9 @@ import androidx.annotation.RequiresPermission;
 
 import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.appliction.BaseApplication;
+import com.lixiao.build.mybase.share.MyShare;
+import com.lixiao.build.util.Md5Util;
+import com.lixiao.build.util.RandomUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,9 +30,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.Reader;
+import java.net.NetworkInterface;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Locale;
+import java.util.UUID;
 
 /**
  * Created by xiefuning on 2017/4/13.
@@ -48,8 +54,7 @@ public class PhoneUtil {
         manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         try {
             PackageManager packageManager = context.getPackageManager();
-            packageInfo = packageManager.getPackageInfo(
-                    context.getPackageName(), 0);
+            packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -78,17 +83,9 @@ public class PhoneUtil {
     }
 
 
-
-//    public String getCid() {
-//        String channelName = AnalyticsConfig.getChannel(content);
-//        return channelName;
-//    }
-
-
     public String loadFileAsString(String fileName) throws Exception {
         File file = new File(fileName);
-        if (!file.exists())
-            return "";
+        if (!file.exists()) return "";
         FileReader reader = new FileReader(fileName);
         String text = loadReaderAsString(reader);
         reader.close();
@@ -112,8 +109,7 @@ public class PhoneUtil {
      * @return
      */
     public String getVersionCode() {
-        if (packageInfo != null)
-            return packageInfo.versionCode + "";
+        if (packageInfo != null) return packageInfo.versionCode + "";
         return "";
     }
     //VersionCode升级App版本时用，VersionName显示给用户
@@ -124,8 +120,7 @@ public class PhoneUtil {
      * @return
      */
     public String getVersionName() {
-        if (packageInfo != null)
-            return packageInfo.versionName;
+        if (packageInfo != null) return packageInfo.versionName;
         return "";
     }
 
@@ -143,8 +138,7 @@ public class PhoneUtil {
     public String getCountryId() {
         String CountryID = manager.getSimCountryIso().toUpperCase();
         if (TextUtils.isEmpty(CountryID)) {
-            if (CountryID.length() > 0)
-                return CountryID;
+            if (CountryID.length() > 0) return CountryID;
         }
         return manager.getNetworkCountryIso();
     }
@@ -170,10 +164,6 @@ public class PhoneUtil {
     public String getOsVersion() {
         return Build.VERSION.RELEASE;
     }
-
-
-
-
 
 
     public String getRatio(Activity activity) {
@@ -210,7 +200,6 @@ public class PhoneUtil {
     }
 
 
-
     public String[] getVersion() {
         String[] version = {"null", "null", "null", "null"};
         String str1 = "/proc/version";
@@ -220,8 +209,7 @@ public class PhoneUtil {
         BufferedReader localBufferedReader = null;
         try {
             localFileReader = new FileReader(str1);
-            localBufferedReader = new BufferedReader(
-                    localFileReader, 8192);
+            localBufferedReader = new BufferedReader(localFileReader, 8192);
             str2 = localBufferedReader.readLine();
             arrayOfString = str2.split("\\s+");
             version[0] = arrayOfString[2];//KernelVersion
@@ -418,7 +406,182 @@ public class PhoneUtil {
         //TODO 连接wifi名字
     }
 
+    public String getCanUseBS() {
+        //先从数据库拿MAC数据
+        String macSerial = MyShare.getInstance().getString("mac");
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is 111111111111111111111111111");
+            return macSerial;
+        }
+        //再优先使用ADB获取MAC地址
+        macSerial = adbGetMac();
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is 33333333333333333333");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
+        //还为空直接读文件夹
+        macSerial = readFileGetMac();
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is 4444444444444444444444");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
+        macSerial = getWifiMac(BaseApplication.getContext());
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is 222222222222222222");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
 
+        String ANDROID_ID = Settings.System.getString(BaseApplication.getContext().getContentResolver(), Settings.System.ANDROID_ID);
+        String dateDeviceId=useDateGetDeviceId();
+        macSerial=useAndoridIdAndDateDeviceIdGetStr(ANDROID_ID,dateDeviceId);
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is..444444");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
+
+        macSerial =Md5Util.MD5(Build.FINGERPRINT) ;
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is 555555555555555555555555");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
+        macSerial=getImsi();
+        if (checkIsMac(macSerial)) {
+            LG.i(tag, "....dudao maca is..33333333333");
+            MyShare.getInstance().putString("mac", macSerial);
+            return macSerial;
+        }
+        UUID uuid = new UUID(RandomUtil.getInstance().getRandomString(10).hashCode(), RandomUtil.getInstance().getRandomString(10).hashCode());
+        macSerial = uuid.toString();
+        MyShare.getInstance().putString("mac", macSerial);
+        LG.i(tag, "....dudao maca is 666666666666666666");
+        return macSerial;
+    }
+
+    private boolean checkIsMac(String checkMac) {
+        if (TextUtils.isEmpty(checkMac)) {
+            return false;
+        } else {
+            if ("02:00:00:00:00:00".equals(checkMac) || "00:00:00:00:00:00".equals(checkMac)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    private String useAndoridIdAndDateDeviceIdGetStr(String a,String b){
+        if(TextUtils.isEmpty(a)){
+            if(TextUtils.isEmpty(b)){
+                return "";
+            }else {
+                return Md5Util.MD5(b);
+            }
+        }else {
+            if(TextUtils.isEmpty(b)){
+                return Md5Util.MD5(a);
+            }else {
+                return Md5Util.MD5(a+b);
+            }
+
+        }
+
+    }
+
+    public  String useDateGetDeviceId()
+    {
+        String serial = null;
+
+        String m_szDevIDShort = "35" +
+                Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
+                Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 +
+                Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
+                Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 +
+                Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 +
+                Build.TAGS.length() % 10 + Build.TYPE.length() % 10 +
+                Build.USER.length() % 10; //13 位
+
+        try
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            {
+                serial = android.os.Build.getSerial();
+            }
+            else
+            {
+                serial = Build.SERIAL;
+            }
+            //API>=9 使用serial号
+            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        }
+        catch (Exception exception)
+        {
+            //serial需要一个初始化
+            serial = "serial"; // 随便一个初始化
+        }
+
+        //使用硬件信息拼凑出来的15位号码
+        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+    }
+
+
+    /**
+     * \* 获取Wifi Mac 默认值空字符串
+     * <p>
+     * <p>
+     * <p>
+     * \* @param paramContext
+     * <p>
+     * \* @return
+     */
+
+    public static String getWifiMac(Context paramContext) {
+        String result = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            try {
+                Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+                while (interfaces != null && interfaces.hasMoreElements()) {
+                    NetworkInterface iF = interfaces.nextElement();
+
+                    byte[] addr = iF.getHardwareAddress();
+                    if (addr == null || addr.length == 0) {
+                        continue;
+                    }
+                    //其他网卡（如rmnet0）的MAC，跳过
+                    if ("wlan0".equalsIgnoreCase(iF.getName()) || "eth0".equalsIgnoreCase(iF.getName())) {
+                        StringBuilder buf = new StringBuilder();
+                        for (byte b : addr) {
+                            buf.append(String.format("%02X:", b));
+                        }
+                        if (buf.length() > 0) {
+                            buf.deleteCharAt(buf.length() - 1);
+                        }
+                        String mac = buf.toString();
+                        if (mac.length() > 0) {
+                            result = mac;
+                            return result;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+        } else {
+            try {
+                // MAC地址
+                WifiManager wifi = (WifiManager) paramContext.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                if (wifi != null) {
+                    WifiInfo wiinfo = wifi.getConnectionInfo();
+                    result = wiinfo.getMacAddress();
+                }
+            } catch (Throwable e) {
+            }
+        }
+        return result;
+    }
 
 
     /**
@@ -443,8 +606,7 @@ public class PhoneUtil {
         String macSerial = "";
         String str = "";
         try {
-            Process pp = Runtime.getRuntime().exec(
-                    "cat /sys/class/net/wlan0/address ");
+            Process pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address ");
             InputStreamReader ir = new InputStreamReader(pp.getInputStream());
             LineNumberReader input = new LineNumberReader(ir);
             for (; null != str; ) {
@@ -564,9 +726,9 @@ public class PhoneUtil {
 //        //时区
 //        String osUserTimeZone = System.getProperty("os.timezone");
 //        LG.i(tag,"时区：" + osUserTimeZone);
-        String svBuildName ="ChannelStr";
+        String svBuildName = "ChannelStr";
         phoneSystemInfoBean.setSvBuildName(svBuildName);
-        String mac ="mac" ;
+        String mac = "mac";
         phoneSystemInfoBean.setMac(mac);
 
         phoneSystemInfoBean.setReadSystem(PhoneUtil.getInstance().readSystem());
@@ -574,7 +736,6 @@ public class PhoneUtil {
         LG.i(tag, "---kankanphonedevice:" + phoneSystemInfoBean);
         return phoneSystemInfoBean;
     }
-
 
 
 }
